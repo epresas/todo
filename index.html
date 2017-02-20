@@ -4,18 +4,28 @@
 	<meta charset="UTF-8">
 
 	<title>To do list</title>
+	<!--Bower dependencies-->
+	<link rel="stylesheet" type="text/css" ref="bower_components/bootstrap/dist/css/bootstrap.css">
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
 	<link rel="stylesheet" href="css/mainStyle.css">
 </head>
+
 <body>
-<h1>To do</h1>
-<div>
-	<input type="text" id="todoTextInput" placeholder="Insert Todo">
-	<button>Add</button>
-</div>
-<div class="buttonFrame">
-	<button id="toggleAllBtn">Toggle All</button>
-	<button></button>
-</div>
-<script src="js/mainScript.js"></script>	
+	<div class="container-fluid">
+		<h1>To do</h1>
+		<div>
+			<input type="text" id="todoTextInput" placeholder="Insert Todo">
+			<button onclick="handlers.addTodo()">Add</button>
+		</div>
+		
+		
+		<button onclick="handlers.toggleAll()" id="toggleAllBtn" class="btn btn-default">Toggle All</button>
+		
+			
+	</div>
+	<script src="js/mainScript.js"></script>
 </body>
+
 </html>
