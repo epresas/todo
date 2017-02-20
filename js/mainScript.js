@@ -1,6 +1,8 @@
+
+$('#todoTextInput').focus();
 var todoList = {
 	todos: [],
-  displayTodo: function(){
+  	displayTodo: function(){
     if(this.todos.length === 0){
       console.log('The list is empty');
     } 
@@ -24,16 +26,19 @@ var todoList = {
       completed: false
     });
     this.displayTodo();
+    $('#todoTextInput').focus();
   },
   
   changeTodo: function(position,todoText){
     this.todos[position].todoText = todoText;
     this.displayTodo();
+    $('#todoTextInput').focus();
   },
   
   deleteTodo: function (position){
     this.todos.splice(position,1);
     this.displayTodo();
+    $('#todoTextInput').focus();
   },
   toggleCompleted: function(position){
     var todo = this.todos[position];
@@ -69,9 +74,9 @@ var handlers={
     todoList.displayTodo();
   },
   addTodo: function(){
-    var todoInput= document.getElementById('todoTextInput');
-    todoList.addTodo(todoInput.value);
-    todoInput.value="";
+    var todoInput= $('#todoTextInput').val();
+    todoList.addTodo(todoInput);
+    $('#todoTextInput').val("");
   },
   toggleAll:function(){
     todoList.toggleAll();
@@ -81,12 +86,34 @@ var handlers={
 var view = {
   
   displayTodo: function(){
-    var todoUl = document.querySelector('ul');
-    todoUl.innerHTML = '';
+    var todoUl = $("ul");
+    $(todoUl).empty();
     for (i=0; i < todoList.todos.length; i++){
-      var todoLi = document.createElement('li');
-      todoUl.appendChild(todoLi);
+      var todoLi = todoList.todos[i].todoText;
+      // console.log(todoLi);
+      $(todoUl).append('<li><div class="completedCheck"></div><span class="todoLiText">'+todoLi+'</span><button class="btnRemoveTodo">X</button></li>');
     }
   }
-
 };
+
+$("#todoTextInput").keypress(function( event ) {
+	if ( event.which == 13 ) {
+	     handlers.addTodo();
+	     view.displayTodo();
+	}
+});
+
+$('#addTodoBtn').click(function(){
+	handlers.addTodo();
+	view.displayTodo();
+});
+$('.btnRemoveTodo').click( function(){
+	var li = $(this).index();
+	
+
+	// var todoIndex = todoList.todos.indexOf(this);
+	console.log(li);
+	// todoList.deleteTodo(todoIndex);
+	// view.displayTodo();
+});
+
