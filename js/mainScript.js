@@ -1,5 +1,6 @@
 
 $('#todoTextInput').focus();
+//################# OBJECTS ##################################################
 var todoList = {
 	todos: [],
 
@@ -19,6 +20,7 @@ var todoList = {
   deleteTodo: function (position){
     this.todos.splice(position,1);
     $('#todoTextInput').focus();
+    view.displayTodo();
   },
   toggleCompleted: function(position){
     var todo = this.todos[position];
@@ -57,6 +59,10 @@ var handlers={
   toggleAll:function(){
     todoList.toggleAll();
    	view.displayTodo();
+  },
+  deleteTodo: function(position){
+    todoList.deleteTodo(position);
+    view.displayTodo();
   }
 };
 
@@ -66,27 +72,37 @@ var view = {
     var todoUl = $("ul");
     $(todoUl).empty();
     for (i=0; i < todoList.todos.length; i++){
-      var todoLi = todoList.todos[i].todoText;
-      // console.log(todoLi);
-      $(todoUl).append('<li><div class="completedCheck"></div><span class="todoLiText">'+todoLi+'</span><button class="btnRemoveTodo">X</button></li>');
+      var todoLi = document.createElement('li');
+      todoLi.id = i;
+      $(todoLi).text(todoList.todos[i].todoText);
+      $(todoLi).append(this.addDeleteBtn());
+      
+      $(todoUl).append(todoLi);
+
     }
+  },
+  addDeleteBtn: function(){
+    var deleteBtn = document.createElement('button');
+    $(deleteBtn).addClass("deleteBtn").text('X');
+    return deleteBtn;
   }
 };
 
-$("#todoTextInput").keypress(function( event ) {
-	if ( event.which == 13 ) {
-	     handlers.addTodo();  
-	}
-});
+//################# OBJECTS ##################################################
+
+  var todoUl = document.querySelector('ul');
+  todoUl.addEventListener("click", function(event){
+    var clickedElement = event.target;
+    if(clickedElement.className === 'deleteBtn'){
+    handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
+    }
+  });
+
+  $("#todoTextInput").keypress(function(event) {
+  	if (event.which == 13) {
+  	     handlers.addTodo();  
+  	}
+  });
 
 
-$('.btnRemoveTodo').click( function(){
-	var li = $(this).index();
-	
-
-	// var todoIndex = todoList.todos.indexOf(this);
-	console.log(li);
-	// todoList.deleteTodo(todoIndex);
-	// view.displayTodo();
-});
 
