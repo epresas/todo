@@ -1,7 +1,26 @@
+
 li{
-	list-style: none;
-	
+list-style: none;
+}
+.todoLiText{
+	margin-left: 25px;
+
 }
 #completedCheck{
 	display: inline;
+}
+.imgCheckedFalse{
+	background-image: url(img/markEmpty.svg);
+	background-repeat: no-repeat;
+
+}
+.imgCheckedTrue{
+	background-image: url(img/mark.svg);
+	background-repeat: no-repeat;
+}
+.imgCheckedTrue .todoLiText{
+	text-decoration: line-through;
+}
+.deleteBtn{
+	margin-left: 5px;
 }

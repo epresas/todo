@@ -1,9 +1,10 @@
 
-$('#todoTextInput').focus();
+$(document).ready(function(){
+  $('#todoTextInput').focus();
+});
 //################# OBJECTS ##################################################
 var todoList = {
 	todos: [],
-
   addTodo: function(todoText){
     this.todos.push({
       todoText: todoText,
@@ -29,40 +30,41 @@ var todoList = {
   toggleAll: function(){
     var totalTodos = this.todos.length;
     var totalCompleted = 0;
-    for(i=0;i< totalTodos;i++){
-      if(this.todos[i].completed === true){
+
+    this.todos.forEach( function (todo) {
+      if (todo.completed === true) {
         totalCompleted++;
       }
-    }
-    if(totalTodos === totalCompleted){
-      for(i=0;i<totalTodos;i++){
-        this.todos[i].completed=false;
-      }
-    }
-    else {
-      for(i=0;i<totalTodos;i++){
-        this.todos[i].completed=true;
-      }
-       
-    }
-  }
+    });
 
+    this.todos.forEach(function(todo) {
+      if(totalTodos === totalCompleted){
+        todo.completed = false;
+      } else {
+        todo.completed = true;
+      }
+    });
+  }
 };
 
 var handlers={
   addTodo: function(){
     var todoInput= $('#todoTextInput').val();
+    if (todoInput === "") {
+      alert('Text field cannot be empty!');
+    } else {
     todoList.addTodo(todoInput);
     $('#todoTextInput').val("");
+    view.displayTodo();
+    }
+  },
+  deleteTodo: function(position){
+    todoList.deleteTodo(position);
     view.displayTodo();
   },
   toggleAll:function(){
     todoList.toggleAll();
    	view.displayTodo();
-  },
-  deleteTodo: function(position){
-    todoList.deleteTodo(position);
-    view.displayTodo();
   }
 };
 
@@ -71,15 +73,19 @@ var view = {
   displayTodo: function(){
     var todoUl = $("ul");
     $(todoUl).empty();
-    for (i=0; i < todoList.todos.length; i++){
+    todoList.todos.forEach(function(todo, position) {
       var todoLi = document.createElement('li');
-      todoLi.id = i;
-      $(todoLi).text(todoList.todos[i].todoText);
+      todoLi.id = position;
+      $(todoLi).html('<span class="todoLiText">'+todo.todoText+'</span>');
+      if(todo.completed === true){
+        $(todoLi).addClass('imgCheckedTrue');
+      } else {
+        $(todoLi).addClass('imgCheckedFalse');
+      }
       $(todoLi).append(this.addDeleteBtn());
-      
       $(todoUl).append(todoLi);
-
-    }
+    }, this); //this hace referencia al this del objeto, y se añade para que la instruccion this dentro de la funcion callback llame al objeto tambien.
+    
   },
   addDeleteBtn: function(){
     var deleteBtn = document.createElement('button');
@@ -88,13 +94,13 @@ var view = {
   }
 };
 
-//################# OBJECTS ##################################################
+//################# END - OBJECTS ##################################################
 
   var todoUl = document.querySelector('ul');
   todoUl.addEventListener("click", function(event){
     var clickedElement = event.target;
     if(clickedElement.className === 'deleteBtn'){
-    handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
+      handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
     }
   });
 
