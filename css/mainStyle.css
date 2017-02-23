@@ -5,30 +5,22 @@ margin-bottom: 2px;
 }
 .todoLiText{
 	margin-left: 5px;
-
 }
 #completedCheck{
 	display: inline;
 }
-.imgCheckedFalse{
-	background-image: url(img/markEmpty.svg);
-	background-repeat: no-repeat;
 
-}
-.imgCheckedTrue{
-	background-image: url(img/mark.svg);
-	background-repeat: no-repeat;
-}
-.imgCheckedTrue .todoLiText{
-	text-decoration: line-through;
-}
 .deleteBtn{
 	margin-left: 5px;
-	/*background-image: url(img/delete.svg);
-	background-repeat: no-repeat;*/
-
 }
 .todoTextCompleted{
 	text-decoration: line-through;
-	
+}
+#textEditInput{
+	visibility: hidden;
+	margin-left:  2px;
+}
+.glyphicon-ok{
+	visibility: hidden;
+	margin-left: 5px;
 }

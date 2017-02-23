@@ -72,7 +72,8 @@ var handlers={
     }
   },
   changeTodo: function(position,todoText){
-
+    $('#textEditInput').css('visibility','visible').focus();
+    $('.glyphicon-ok').css('visibility','visible');
   },
   deleteTodo: function(position){
     todoList.deleteTodo(position);
@@ -102,6 +103,7 @@ var view = {
       } 
       $(todoLi).append(this.addDeleteBtn());
       $(todoLi).append(this.addEditBtn());
+      $(todoLi).append('<input id="textEditInput" placeholder="Insert new todo text"/><span class="glyphicon glyphicon-ok"></span>');
       $(todoUl).append(todoLi);
     }, this); //this hace referencia al this del objeto, y se añade para que la instruccion this dentro de la funcion callback llame al objeto tambien.
     
@@ -129,7 +131,10 @@ var view = {
         handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
         break;
       case "editBtn":
-        handlers.changeTodo(parseInt(clickedElement.parentNode.id),/*funcion que edite el texto*/);
+        handlers.changeTodo(parseInt(clickedElement.parentNode.id)/*,funcion que edite el texto*/);
+        break;
+      case "glyphicon glyphicon-edit":
+        handlers.changeTodo(parseInt(clickedElement.parentNode.id)/*,funcion que edite el texto*/);
         break;
       case "glyphicon glyphicon-trash":
         handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
