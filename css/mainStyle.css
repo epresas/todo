@@ -1,9 +1,10 @@
 
 li{
 list-style: none;
+margin-bottom: 2px;
 }
 .todoLiText{
-	margin-left: 25px;
+	margin-left: 5px;
 
 }
 #completedCheck{
@@ -23,4 +24,7 @@ list-style: none;
 }
 .deleteBtn{
 	margin-left: 5px;
+	/*background-image: url(img/delete.svg);
+	background-repeat: no-repeat;*/
+
 }

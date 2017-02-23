@@ -76,12 +76,10 @@ var view = {
     todoList.todos.forEach(function(todo, position) {
       var todoLi = document.createElement('li');
       todoLi.id = position;
-      $(todoLi).html('<span class="todoLiText">'+todo.todoText+'</span>');
+      $(todoLi).html('<span class="glyphicon glyphicon-unchecked"></span><span class="todoLiText">'+ todo.todoText +'</span>');
       if(todo.completed === true){
-        $(todoLi).addClass('imgCheckedTrue');
-      } else {
-        $(todoLi).addClass('imgCheckedFalse');
-      }
+        $(todoLi).html('<span class="glyphicon glyphicon-check"></span><span class="todoLiText">'+ todo.todoText +'</span>');
+      } 
       $(todoLi).append(this.addDeleteBtn());
       $(todoUl).append(todoLi);
     }, this); //this hace referencia al this del objeto, y se añade para que la instruccion this dentro de la funcion callback llame al objeto tambien.
@@ -89,24 +87,28 @@ var view = {
   },
   addDeleteBtn: function(){
     var deleteBtn = document.createElement('button');
-    $(deleteBtn).addClass("deleteBtn").text('X');
+    $(deleteBtn).addClass("deleteBtn").html('<span class="glyphicon glyphicon-trash"></span>');
     return deleteBtn;
   }
 };
 
-//################# END - OBJECTS ##################################################
+//################# OBJECTS ##################################################
 
   var todoUl = document.querySelector('ul');
   todoUl.addEventListener("click", function(event){
     var clickedElement = event.target;
     if(clickedElement.className === 'deleteBtn'){
-      handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
+    handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
     }
   });
 
   $("#todoTextInput").keypress(function(event) {
   	if (event.which == 13) {
+      if($("#todoTextInput").val() === ""){
+        alert('Text field cannot be empty!');  
+      } else {
   	     handlers.addTodo();  
+        } 
   	}
   });
 

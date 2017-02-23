@@ -2,29 +2,37 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-
+	<meta name="author" content="Edmundo Presas">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>Todo list</title>
 	<!--Bower dependencies-->
-	<link rel="stylesheet" type="text/css" ref="bower_components/bootstrap/dist/css/bootstrap.css">
-	<script src="bower_components/jquery/dist/jquery.js"></script>
-	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-
+	
+	
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="css/mainStyle.css">
 </head>
 
 <body>
-	<div class="container-fluid">
-		<h1>Todo List</h1>
-		<div>
-			<input type="text" id="todoTextInput" placeholder="Insert Todo">
-			<button onclick="handlers.addTodo()" id="addTodoBtn">Add</button>
-		</div>
-		
+	<header class="container">
+		<h2>Todo List</h2>
+	</header>	
+	<section class="container">
+		<form action="#">
+			<div class="row">
+				<input type="text" id="todoTextInput" placeholder="Insert Todo">
+				<button onclick="handlers.addTodo()" id="addTodoBtn">Add</button>
+			</div>
+		</form>
 		<button onclick="handlers.toggleAll()" id="toggleAllBtn" class="btn btn-default">Toggle All</button>
 		
 		<ul></ul>		
-	</div>
+	</section>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="js/mainScript.js"></script>
+	<noscript>
+        <p>Sorry, your browser does not support JavaScript!</p>
+    </noscript>
 </body>
 
 </html>
