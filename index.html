@@ -9,6 +9,7 @@
 	
 	
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
 	<link rel="stylesheet" href="css/mainStyle.css">
 </head>
 
@@ -19,15 +20,16 @@
 	<section class="container">
 		<form action="#">
 			<div class="row">
-				<input type="text" id="todoTextInput" placeholder="Insert Todo">
-				<button onclick="handlers.addTodo()" id="addTodoBtn">Add</button>
+				<input type="text" id="todoTextInput" onkeypress="handlers.addTodo()" placeholder="Insert Todo">
+				<button onclick="handlers.addTodoClick()" id="addTodoBtn">Add</button>
 			</div>
 		</form>
-		<button onclick="handlers.toggleAll()" id="toggleAllBtn" class="btn btn-default">Toggle All</button>
+		<button onclick="handlers.toggleAll()" id="toggleAllBtn" class="btn btn-default btn-success">Toggle All</button>
 		
 		<ul></ul>		
 	</section>
 	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="js/mainScript.js"></script>
 	<noscript>
