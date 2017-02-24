@@ -148,11 +148,13 @@ var view = {
 
       case "editBtn":
         // var btnClicked = clickedElement.parentNode.id;
+        $(".deleteBtn").toggle("fast");
         $(clickedElementParent).find('.textEditInput').toggle("fast");
         $(clickedElementParent).find('.glyphicon-ok').toggle("fast");
         break;
 
       case "glyphicon glyphicon-edit":
+        $(".deleteBtn").toggle("fast");
         $(clickedElementParent).siblings('.textEditInput').toggle("fast");
         $(clickedElementParent).siblings('.glyphicon-ok').toggle("fast");
         break;
