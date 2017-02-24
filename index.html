@@ -4,10 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="author" content="Edmundo Presas">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>Todo list</title>
+	<title>Todo list | Edmundo Presas</title>
 	<!--Bower dependencies-->
-	
-	
 	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
 	<link rel="stylesheet" href="css/mainStyle.css">
@@ -15,19 +13,28 @@
 
 <body>
 	<header class="container">
-		<h2>Todo List</h2>
+		<h2 class="text-info">Todo List <small></small></h2>
 	</header>	
 	<section class="container">
-		<form action="#" class="">
-			<div class="form-group">
-				<input type="text" id="todoTextInput" onkeypress="handlers.addTodo()" placeholder="Insert Todo">
-				<button onclick="handlers.addTodoClick()" id="addTodoBtn">Add</button>
-			</div>
-		</form>
-		<button onclick="handlers.toggleAll()" id="toggleAllBtn" class="btn btn-default btn-success">Toggle All</button>
-		
-		<ul></ul>		
+		<div class="row">
+			<div class="formWrap col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<form action="#" class="">
+					<div class="form-group">
+						<input type="text" id="todoTextInput" onkeypress="handlers.addTodo()" placeholder="Insert Todo">
+						<button onclick="handlers.addTodoClick()" id="addTodoBtn">Add</button>
+					</div>
+				</form>
+			</div><!--formWrap-->
+			<div class="listWrap col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			<button onclick="handlers.toggleAll()" id="toggleAllBtn" class="btn btn-default btn-success"><span class="glyphicon glyphicon-check">All</span></button>
+			
+			<ul class="todoList"></ul>
+			</div><!--listWrap-->
+		</div><!--row-->		
 	</section>
+	<footer class="container">
+		
+	</footer>
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>

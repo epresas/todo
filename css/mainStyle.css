@@ -2,25 +2,50 @@
 li{
 list-style: none;
 margin-bottom: 2px;
+
 }
 .todoLiText{
 	margin-left: 5px;
+	margin-right: 5px;
+	min-width: 50px;
 }
 #completedCheck{
 	display: inline;
 }
 
-.deleteBtn{
-	margin-left: 5px;
+.editBtn{
+	float: right;
 }
+.glyphicon-ok{
+	display: none;
+	margin-left: 5px;
+	margin-right: 5px;
+	float: right;
+	top:5px;
+}
+.textEditInput{
+	display: none;
+	margin-left:  2px;
+	float: right;
+}
+.deleteBtn{
+	margin-right: 5px;
+	float: right;
+}
+
 .todoTextCompleted{
 	text-decoration: line-through;
 }
-.textEditInput{
-	display:  none;
-	margin-left:  2px;
+#toggleAllBtn{
+	visibility: hidden;
+	margin-bottom: 10px;
 }
-.glyphicon-ok{
-	display:  none;
-	margin-left: 5px;
+.well{
+	margin-bottom: 3px;
 }
+/*.oddLi{
+	background-color: #EFEBEB;
+}
+.evenLi{
+	background-color:#CACACA;
+}*/
