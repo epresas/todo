@@ -96,15 +96,18 @@ var view = {
   
   displayTodo: function(){
     var totalTodos = todoList.todos.length;
+    
     if (totalTodos!=0){
       $("#toggleAllBtn").css("visibility","visible");
     }
+    
     var todoUl = $("ul");
     $(todoUl).empty();
     todoList.todos.forEach(function(todo, position) {
       var todoLi = document.createElement('li');
       todoLi.id = position;
       $(todoLi).html('<span class="glyphicon glyphicon-unchecked"></span><span class="todoLiText text-primary">'+ todo.todoText +'</span>');
+      
       if(todo.completed === true){
         $(todoLi).html('<span class="glyphicon glyphicon-check"></span><span class="todoLiText todoTextCompleted text-success">'+ todo.todoText +'</span>');
       } 
@@ -113,11 +116,7 @@ var view = {
       $(todoLi).append('<input class="textEditInput" placeholder="Insert new todo text"/><span class="glyphicon glyphicon-ok"></span>');
       $(todoLi).append(this.addDeleteBtn());
       $(todoUl).append(todoLi);
-      // $("ul li:nth-child(even)").addClass("evenLi");
-      // $("ul li:nth-child(odd) .todoLiText").addClass("oddLi");
       $("ul li").addClass("well well-sm");
-
-
     }, this); //this hace referencia al objeto, y se añade para que la instruccion this dentro de la funcion callback llame al objeto tambien.   
   },
   addDeleteBtn: function(){
@@ -147,7 +146,6 @@ var view = {
         break;
 
       case "editBtn":
-        // var btnClicked = clickedElement.parentNode.id;
         $(clickedElementParent).find('.deleteBtn').toggle("fast");
         $(clickedElementParent).find('.textEditInput').toggle("fast");
         $(clickedElementParent).find('.glyphicon-ok').toggle("fast");
@@ -180,7 +178,6 @@ var view = {
           console.log(newText);
         handlers.changeTodo(parseInt(clickedElementParentId),newText);
         }
-        
         break;
     }
   });
