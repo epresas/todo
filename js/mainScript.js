@@ -104,9 +104,9 @@ var view = {
     todoList.todos.forEach(function(todo, position) {
       var todoLi = document.createElement('li');
       todoLi.id = position;
-      $(todoLi).html('<span class="glyphicon glyphicon-unchecked"></span><span class="todoLiText">'+ todo.todoText +'</span>');
+      $(todoLi).html('<span class="glyphicon glyphicon-unchecked"></span><span class="todoLiText text-primary">'+ todo.todoText +'</span>');
       if(todo.completed === true){
-        $(todoLi).html('<span class="glyphicon glyphicon-check"></span><span class="todoLiText todoTextCompleted">'+ todo.todoText +'</span>');
+        $(todoLi).html('<span class="glyphicon glyphicon-check"></span><span class="todoLiText todoTextCompleted text-success">'+ todo.todoText +'</span>');
       } 
       
       $(todoLi).append(this.addEditBtn());
