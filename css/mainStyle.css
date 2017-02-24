@@ -17,10 +17,10 @@ margin-bottom: 2px;
 	text-decoration: line-through;
 }
 #textEditInput{
-	visibility: hidden;
+	display:  none;
 	margin-left:  2px;
 }
 .glyphicon-ok{
-	visibility: hidden;
+	display:  none;
 	margin-left: 5px;
 }
