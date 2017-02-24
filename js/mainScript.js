@@ -99,11 +99,11 @@ var view = {
       todoLi.id = position;
       $(todoLi).html('<span class="glyphicon glyphicon-unchecked"></span><span class="todoLiText">'+ todo.todoText +'</span>');
       if(todo.completed === true){
-        $(todoLi).html('<span class="glyphicon glyphicon-check"></span><span class="todoLiText">'+ todo.todoText +'</span>');
+        $(todoLi).html('<span class="glyphicon glyphicon-check"></span><span class="todoLiText todoTextCompleted">'+ todo.todoText +'</span>');
       } 
       $(todoLi).append(this.addDeleteBtn());
       $(todoLi).append(this.addEditBtn());
-      $(todoLi).append('<input id="textEditInput" placeholder="Insert new todo text"/><span class="glyphicon glyphicon-ok"></span>');
+      $(todoLi).append('<input class="textEditInput" placeholder="Insert new todo text"/><span class="glyphicon glyphicon-ok"></span>');
       $(todoUl).append(todoLi);
     }, this); //this hace referencia al objeto, y se añade para que la instruccion this dentro de la funcion callback llame al objeto tambien.   
   },
@@ -125,41 +125,42 @@ var view = {
   var todoUl = document.querySelector('ul');
   todoUl.addEventListener("click", function(event){
     var clickedElement = event.target;
+    var clickedElementParentId=clickedElement.parentNode.id;
+    var clickedElementParent=clickedElement.parentNode;
 
     switch (clickedElement.className){
       case "deleteBtn":
-        handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
+        handlers.deleteTodo(parseInt(clickedElementParentId));
         break;
 
       case "editBtn":
-        $('#textEditInput').toggle();
-        $('.glyphicon-ok').toggle();
+        // var btnClicked = clickedElement.parentNode.id;
+        $(clickedElementParent).find('.textEditInput').toggle();
+        $(clickedElementParent).find('.glyphicon-ok').toggle();
         break;
 
       case "glyphicon glyphicon-edit":
-        $('#textEditInput').toggle();
-        $('.glyphicon-ok').toggle();
+        $(clickedElementParent).siblings('.textEditInput').toggle();
+        $(clickedElementParent).siblings('.glyphicon-ok').toggle();
         break;
 
       case "glyphicon glyphicon-trash":
-        handlers.deleteTodo(parseInt(clickedElement.parentNode.id));
+        handlers.deleteTodo(parseInt(clickedElementParentId));
         break;
 
       case "glyphicon glyphicon-unchecked":
-        handlers.toggleCompleted(parseInt(clickedElement.parentNode.id));
-        var classText = $('.todoLiText');
-        classText.addClass('todoTextCompleted');
+        handlers.toggleCompleted(parseInt(clickedElementParentId));
         break;
 
       case "glyphicon glyphicon-check":
-        handlers.toggleCompleted(parseInt(clickedElement.parentNode.id));
-        var text= document.getElementById('todoLiText');
-        text.className -= 'todoTextCompleted';
+        handlers.toggleCompleted(parseInt(clickedElementParentId));
         break;
 
       case "glyphicon glyphicon-ok":
-        var newText = $('#textEditInput').val();
-        handlers.changeTodo(parseInt(clickedElement.parentNode.id),newText);
+        // console.log(clickedElementParentId);
+        var newText= $(clickedElementParent).find('input').val();
+        console.log(newText);
+        handlers.changeTodo(parseInt(clickedElementParentId),newText);
         break;
     }
   });
