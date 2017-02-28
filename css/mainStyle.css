@@ -1,4 +1,7 @@
 
+body{
+	/*margin-bottom: 20px;*/
+}
 li{
 list-style: none;
 margin-bottom: 2px;
@@ -31,6 +34,8 @@ margin-bottom: 2px;
 .deleteBtn{
 	margin-right: 2px;
 	float: right;
+	vertical-align: top;
+
 }
 
 .todoTextCompleted{
@@ -42,4 +47,7 @@ margin-bottom: 2px;
 }
 .well{
 	margin-bottom: 3px;
+}
+.listWrap{
+	margin-top: 20px;
 }

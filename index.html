@@ -14,21 +14,25 @@
 <body>
 	<header class="container">
 		<h2 class="text-info">Todo List <small></small></h2>
-	</header>	
+	</header>
+	
 	<section class="container">
-		<div class="row">
-			<div class="formWrap col-xs-12 col-sm-6 col-md-6 col-lg-6">
-				<form action="#" class="">
+		<div class="row ">
+			<div class="formWrap col-xs-12 col-sm-12 col-md-5 ">
+				<form class="form-inline">
 					<div class="form-group">
-						<input type="text" id="todoTextInput" onkeypress="handlers.addTodo()" placeholder="Insert Todo">
+						<label class="sr-only" for="todoTextInput">Insert todo:</label>
+						<input class="form-control" type="text" id="todoTextInput" onkeypress="handlers.addTodo()" placeholder="Insert Todo">
 						<button onclick="handlers.addTodoClick()" id="addTodoBtn">Add</button>
 					</div>
 				</form>
 			</div><!--formWrap-->
-			<div class="listWrap col-xs-12 col-sm-6 col-md-6 col-lg-6">
-			<button onclick="handlers.toggleAll()" id="toggleAllBtn" class="btn btn-default btn-success"><span class="glyphicon glyphicon-check">All</span></button>
-			
-			<ul class="todoList"></ul>
+			<div class="listWrap col-xs-12 col-sm-12 col-md-7 ">
+				<div class="row align-items-center">
+					<button onclick="handlers.toggleAll()" id="toggleAllBtn" class="btn btn-default btn-success col-xs-1" data-placement="top" data-toggle="tooltip" trigger="hover" title="Toggle All"><span class="glyphicon glyphicon-check"></span></button>
+					
+					<ul class="todoList list-stripped col-xs-11"></ul>
+				</div>
 			</div><!--listWrap-->
 		</div><!--row-->		
 	</section>

@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
   $('#todoTextInput').focus();
+  $('[data-toggle="tooltip"]').tooltip();
 });
 //################# OBJECTS ##################################################
 var todoList = {
@@ -121,12 +122,20 @@ var view = {
   },
   addDeleteBtn: function(){
     var deleteBtn = document.createElement('button');
-    $(deleteBtn).addClass("deleteBtn").html('<span class="glyphicon glyphicon-trash"></span>');
+    $(deleteBtn).addClass("deleteBtn").attr( "data-placement", "top")
+                                      .attr( "data-toggle", "tooltip")
+                                      .attr( "trigger", "hover")
+                                      .attr( "title", "Delete")
+                                      .html('<span class="glyphicon glyphicon-trash" ></span>');
     return deleteBtn;
   },
   addEditBtn: function(){
     var editBtn = document.createElement('button');
-    $(editBtn).addClass("editBtn").html('<span class="glyphicon glyphicon-edit"></span>');
+    $(editBtn).addClass("editBtn").attr( "data-placement", "top")
+                                      .attr( "data-toggle", "tooltip")
+                                      .attr( "trigger", "hover")
+                                      .attr( "title", "Edit")
+                                      .html('<span class="glyphicon glyphicon-edit"></span>');
     return editBtn;  
   }
 };
